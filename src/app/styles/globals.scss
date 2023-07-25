@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Roboto:ital,wght@0,400;0,500;0,700;1,300&display=swap');
+
+// Variables
+$background: #100E0F;
+$background2: #151314;
+
+$dark1: #302B2E;
+$dark2: #50484B;
+$dark3: #706667;
+$primary: #908383;
+$light1: #A59A9C;
+$light2: #BAB1B5;
+$light3: #CFC8CD;
+$light4: #E4E0E3;
+
+$green: #27936C;
+$red: #C65959;
+
+// Resets
+*{
+ padding: 0;
+ margin: 0;
+}
+
+body {
+ margin: 0;
+ padding: 0;
+ font-family: 'Inter', sans-serif;
+ background-color: $background;
+ color: $light4;
+}
+
+// Color Classes
+
+.background{ color: #100E0F; background-color: #100E0F;} 
+.background2{ color: #151314; background-color: #151314;} 
+
+.dark1{ color: #302B2E; } 
+.dark2{ color: #50484B; }
+.dark3{ color: #706667; } 
+.primary { color: #908383; }
+.light1 { color:  #A59A9C; }
+.light2 {color: #BAB1B5; }
+.light3 {color:  #CFC8CD; }
+.light4 {color: #E4E0E3; }
+
+.green{ color: #27936C;}
+
+// Form
+
+form{
+ padding: 0px 20px;
+}
+
+.header--form{
+ padding: 0 20px;
+}
+
+textarea,
+input {
+ outline: none;
+}
+
+// Button base
+
+button {
+ all: unset;
+ cursor: pointer;
+}
+
+button:focus {
+ outline: revert;
+}
+
+.btn{
+ padding: 15px 20px;
+ border-radius: 2px;
+}
+
+ .btn-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $dark1;
+  color: $light4;
+  background: $dark2;
+  padding: 15px 20px;
+ }
+
+ .btn-outline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid $primary;
+  color: $light4;
+  background-color: $background2;
+ }
+
+ .btn-outline--space-between{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+ }
+
+ .btn-text{
+ text-decoration: none;
+ color: $light4;
+ font-weight: 500;
+ }
+
+// text resets 
+
+h1{
+
+}
+h2{
+
+}
+h3{
+
+}
+h4{
+ font-size: 2.25rem;
+}
+h5{
+ font-size: 1.5rem;
+ font-weight: 500;
+}
+
+
+.divider{
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ width: 100%;
+
+ p{
+ padding: 0 20px;
+ color: $light4;
+ font-weight: 500;
+ }
+
+ hr{
+ width: 100%;
+ height: 1px;
+ border: none;
+ background-color: $primary;
+ }
+}
+
+.center{
+margin: auto;
+}
+
+// State change utility styles
+
+.comply{
+ color: $green;
+}
+
+.error {
+ color: #C65959;
+}
+
+.error--input{
+ color: #C65959;
+ border: 1px solid #C65959;
+}
+
+.hide{
+ display: none;
+}

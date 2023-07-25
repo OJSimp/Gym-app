@@ -1,0 +1,47 @@
+@import '../../styles/globals.scss';
+
+.form-container{
+ display: flex;
+ flex-direction: column;
+ gap: 20px;
+ max-width: 400px;
+ margin: auto;
+ padding: 60px 0px;
+
+ .header--form{
+ display: flex;
+ flex-direction: column;
+ gap: 10px;
+ }
+}
+
+.form__btns{
+ display: flex;
+ flex-direction: column;
+ gap: 20px;
+}
+
+.password-condition{
+ display: flex;
+ flex-direction: column;
+ gap: 20px;
+ padding: 20px;
+ margin-bottom: 20px;
+ border-radius: 2px;
+ border: 1px solid $dark2;
+ color: $light2;
+ transition: transform 0.3s ease;
+ // background-color: $background2;
+
+
+ .password-condition__item{
+ display: flex;
+ align-items: center;
+ gap: 10px;
+ color: $primary;
+
+ span{
+ padding-top: 4px;
+ }
+ }
+}
