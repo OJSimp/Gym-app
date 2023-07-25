@@ -18,12 +18,13 @@ import IconTextInput from "../(inputs)/IconTextInput";
 
 // Icons
 import DoneIcon from "@mui/icons-material/Done";
+import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 import GoogleIcon from "@mui/icons-material/Google";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import AppleIcon from "@mui/icons-material/Apple";
 
 const SignUp = () => {
-  const [emailErrorMessage, setEmailErrorMessage] = React.useState("");
+  const [emailErrorMessage, setEmailErrorMessage] = React.useState(null);
   const [isPasswordFocused, setIsPasswordFocused] = React.useState(false);
 
   const [user, setUser] = React.useState({
@@ -31,7 +32,7 @@ const SignUp = () => {
     password: "",
   });
 
-  const { sigUpMutation, emailError } = useSignUp();
+  const { sigUpMutation, errorMessage } = useSignUp();
 
   const {} = useForm();
 
@@ -135,7 +136,8 @@ const SignUp = () => {
           id="email-address"
           type="email"
           label="Email addresss"
-          error={!emailError ? "" : emailError}
+          error=""
+          // error={emailErrorMessage ? emailErrorMessage : ""}
           name="email"
           onChange={(e) => {
             setUser({ ...user, email: e.target.value });
@@ -176,6 +178,13 @@ const SignUp = () => {
           </div>
         </div>
 
+        {errorMessage ? (
+          <div className="error--message">
+            <ErrorOutlineIcon />
+            <p>{errorMessage}</p>
+          </div>
+        ) : null}
+
         {/* Sign up form buttons */}
 
         <div className="form__btns">
@@ -202,31 +211,27 @@ const SignUp = () => {
           </div>
 
           <button
-            type="submit"
-            className="btn btn-outline btn-outline--space-between"
+            type="button"
+            className="btn btn-outline btn-outline--align-left"
           >
+            <GoogleIcon />
             <span>Sign up with Google</span>
-            <span>
-              <GoogleIcon />
-            </span>
           </button>
+
           <button
-            type="submit"
-            className="btn btn-outline btn-outline--space-between"
+            type="button"
+            className="btn btn-outline btn-outline--align-left"
           >
+            <FacebookIcon />
             <span>Sign up with Facebook</span>
-            <span>
-              <FacebookIcon />
-            </span>
           </button>
+
           <button
-            type="submit"
-            className="btn btn-outline btn-outline--space-between"
+            type="button"
+            className="btn btn-outline btn-outline--align-left"
           >
+            <AppleIcon />
             <span>Sign up with Apple</span>
-            <span>
-              <AppleIcon />
-            </span>
           </button>
         </div>
       </form>

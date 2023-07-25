@@ -7,24 +7,11 @@ import axios, { AxiosError } from "axios";
 export const useSignUp = (user) => {
   const router = useRouter();
 
-  const [emailError, setEmailError] = useState(null);
-  const [passwordError, setPasswordError] = useState(null);
+  const [errorMessage, setErrorMessage] = useState(null);
 
   const signup = async (user) => {
-    setEmailError(null);
-    setPasswordError(null);
+    setErrorMessage(null);
     await axios.post("/api/auth/signup", user);
-    // try {
-    //   const response = await axios.post("/api/auth/signup", user);
-    //   console.log("Signup success", response.data);
-    //   // router.push("/");
-    // } catch (error) {
-    //   console.log(
-    //     "Signup failed",
-    //     error.response.status,
-    //     error.response.data.error
-    //   );
-    // }
   };
 
   const sigUpMutation = useMutation({
@@ -45,10 +32,25 @@ export const useSignUp = (user) => {
       // Return errors to client
       if (error instanceof AxiosError) {
         if (error.response.status === 400) {
-          setEmailError(error.response.data.error);
+          setErrorMessage(error.response.data.error);
+        }
+        if (error.response.status === 420) {
+          setErrorMessage(error.response.data.error);
+        }
+        if (error.response.status === 421) {
+          setErrorMessage(error.response.data.error);
+        }
+        if (error.response.status === 422) {
+          setErrorMessage(error.response.data.error);
+        }
+        if (error.response.status === 402) {
+          setErrorMessage(error.response.data.error);
+        }
+        if (error.response.status === 410) {
+          setErrorMessage(error.response.data.error);
         }
       }
     },
   });
-  return { sigUpMutation, emailError };
+  return { sigUpMutation, errorMessage };
 };

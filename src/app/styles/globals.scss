@@ -94,6 +94,7 @@ button:focus {
   border: 1px solid $primary;
   color: $light4;
   background-color: $background2;
+
  }
 
  .btn-outline--space-between{
@@ -101,6 +102,13 @@ button:focus {
   align-items: center;
   justify-content: space-between;
  }
+
+  .btn-outline--align-left {
+   display: flex;
+   align-items: center;
+   justify-content: flex-start;
+   gap: 10px;
+  }
 
  .btn-text{
  text-decoration: none;
@@ -162,9 +170,20 @@ margin: auto;
  color: #C65959;
 }
 
+.error--message{
+ color: #C65959;
+ padding: 20px;
+ display: flex;
+ justify-content: flex-start;
+ align-items: center;
+ gap: 10px;
+ border-radius: 2px;
+ border: 1px solid $dark2;
+ margin-bottom: 20px;
+}
+
 .error--input{
  color: #C65959;
- border: 1px solid #C65959;
 }
 
 .hide{
