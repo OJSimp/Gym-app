@@ -2,19 +2,30 @@
 
 import "./SelectInput.scss";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 
 export default function SelectInput(props) {
-  // Show hide password
-
+  const selectRef = useRef(null);
   const [showSelect, setShowSelect] = useState(false);
   const [selectValue, setSelectValue] = useState(null);
-
   const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    const handleOutsideClick = (e) => {
+      if (selectRef.current && !selectRef.current.contains(e.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("click", handleOutsideClick);
+    return () => {
+      document.removeEventListener("click", handleOutsideClick);
+    };
+  }, []);
 
   const handleSelect = () => {
     setIsOpen(!isOpen);
@@ -27,26 +38,30 @@ export default function SelectInput(props) {
   };
 
   return (
-    <div className="input-select">
+    <div className="input-select" ref={selectRef}>
+      <label
+        htmlFor={props.id}
+        className={`select-input__label ${
+          isOpen || selectValue ? "select-input__label--up" : ""
+        }`}
+      >
+        Gender
+        {/* {selectValue ? selectValue : props.label} */}
+      </label>
       <button
-        className={
-          props.class ? `"input__select" ${props.class}` : "input__select"
-        }
-        placeholder=" "
+        className={`input-select__dropdown ${
+          isOpen ? "input-select__dropdown--open" : ""
+        }`}
         type="button"
-        // type={showSelect ? "text" : props.type}
         id={props.id}
         onChange={props.onChange}
         onFocus={props.onFocus}
         onClick={handleSelect}
         name={props.name}
       >
-        {selectValue ? selectValue : <span className="label-hide">s</span>}
+        {selectValue ? selectValue : <span className="label-hide"></span>}
       </button>
 
-      <label className="select-input__label" htmlFor={props.id}>
-        {props.label}
-      </label>
       {/* If there is an error for this input return error message */}
       {props.error === "" ? null : (
         <div

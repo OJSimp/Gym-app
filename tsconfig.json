@@ -29,7 +29,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-, "src/app/api/auth/signup/route.js", "src/models/userModel.js", "src/app/components/(forms)/AccessForms/SignUpForm.js"  ],
+, "src/app/api/auth/signup/route.js", "src/models/userModel.js", "src/app/components/(forms)/AccessForms/SignUpForm.js", "src/app/pages/profileDetails/page.js", "src/app/components/(forms)/WorkoutForms/userInfo.js"  ],
   "exclude": [
     "node_modules"
   ]

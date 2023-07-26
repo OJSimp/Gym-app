@@ -1,12 +1,13 @@
 @import '../../styles/globals.scss';
 
-.input-select {
+.input-date {
  display: flex;
  position: relative;
  flex-direction: column;
  margin-bottom: 20px;
+ 
 
- .input-select__dropdown{
+ .input-date__dropdown {
   color: $light2;
   padding: 20px;
   padding-right: 40px;
@@ -16,6 +17,7 @@
   transition: all 0.2s ease-in-out;
   font-size: 1rem;
   height: 18px;
+  font-family: sans-serif;
 
   &:focus {
    outline: none;
@@ -23,26 +25,28 @@
   }
  }
 
-  .select-input__label {
+ .date-input__label {
   position: absolute;
   padding: 0px 6px;
   background: $background;
   color: $light2;
   font-size: 1rem;
-  top: 19px;
+  top: 20px;
   left: 10px;
-
+  min-width: 100px;
  }
 
- .select-input__label--up{
+ .date-input__label--up {
+  display: inline-block;
   color: $light2;
   transform: translate(0px, -26px);
   font-size: 0.75rem;
   font-weight: 500;
+  min-width: auto;
   transition: all 0.2s ease-in-out;
  }
 
- .select-input__error-message {
+ .date-input__error-message {
   position: relative;
   display: flex;
   align-items: center;
@@ -63,7 +67,7 @@
  }
 }
 
-.select-input__icon {
+.date-input__icon {
  display: flex;
  justify-content: flex-end;
  align-items: flex-end;
@@ -77,16 +81,4 @@
  svg {
   color: $primary;
  }
-}
-
-.input-select__options{
- margin-top: 5px;
- border: 1px solid $light2;
- border-radius: 2px;
- 
- li{
-  list-style: none;
- 
- }
-
 }

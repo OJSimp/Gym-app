@@ -114,9 +114,6 @@ const SignUp = () => {
 
   return (
     <section className="form-container">
-      {/* Sign Up Form Header */}
-
-      {/* Sign Up Form Container */}
       <form className="form__sign-up" onSubmit={handleSignUpUser}>
         <header className="form__header">
           <h5>Create your account</h5>
@@ -131,7 +128,6 @@ const SignUp = () => {
           type="email"
           label="Email addresss"
           error=""
-          // error={emailErrorMessage ? emailErrorMessage : ""}
           name="email"
           onChange={(e) => {
             setUser({ ...user, email: e.target.value });
@@ -179,10 +175,7 @@ const SignUp = () => {
           </div>
         ) : null}
 
-        {/* Sign up form buttons */}
-
         <div className="form__btns">
-          {/* Sign up the user button */}
           <button
             disabled={sigUpMutation.isLoading}
             type="submit"
