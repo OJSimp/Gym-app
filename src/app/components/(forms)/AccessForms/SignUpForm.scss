@@ -1,19 +1,5 @@
-@import '../../styles/globals.scss';
+@import '../../../styles/globals.scss';
 
-.form-container{
- display: flex;
- flex-direction: column;
- gap: 20px;
- max-width: 400px;
- margin: auto;
- padding: 60px 0px;
-
- .header--form{
- display: flex;
- flex-direction: column;
- gap: 10px;
- }
-}
 
 .form__btns{
  display: flex;

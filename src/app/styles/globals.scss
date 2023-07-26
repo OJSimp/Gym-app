@@ -52,9 +52,28 @@ form{
  padding: 0px 20px;
 }
 
-.header--form{
- padding: 0 20px;
+.form-container {
+ display: flex;
+ flex-direction: column;
+ gap: 20px;
+ max-width: 400px;
+ margin: auto;
+ padding: 60px 0px;
+
+ .form__header {
+   display: flex;
+   flex-direction: column;
+   gap: 10px;
+   padding: 20px 0px;
+ 
+   p {
+    color: $light2;
+   }
+  }
 }
+
+
+
 
 textarea,
 input {
@@ -94,7 +113,6 @@ button:focus {
   border: 1px solid $primary;
   color: $light4;
   background-color: $background2;
-
  }
 
  .btn-outline--space-between{
@@ -116,20 +134,35 @@ button:focus {
  font-weight: 500;
  }
 
+ .btn-select{
+  width: stretch;
+  color: $light2;
+  
+ &:hover {
+  cursor: pointer;
+  color: $light4;
+  background-color: $dark1;
+ }
+ }
 // text resets 
 
 h1{
+ font-size: 6rem;
 
 }
 h2{
+ font-size: 3.75rem;
 
 }
 h3{
+ font-size: 3rem;
 
 }
+
 h4{
- font-size: 2.25rem;
+ font-size: 2.125rem;
 }
+
 h5{
  font-size: 1.5rem;
  font-weight: 500;

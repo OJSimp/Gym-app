@@ -6,8 +6,8 @@ import React, { useEffect } from "react";
 // import { toast } from "react-hot-toast";
 
 // Components
-import TextInput from "../(inputs)/TextInput";
-import IconTextInput from "../(inputs)/IconTextInput";
+import TextInput from "../../(inputs)/TextInput";
+import IconTextInput from "../../(inputs)/IconTextInput";
 
 //Hooks
 

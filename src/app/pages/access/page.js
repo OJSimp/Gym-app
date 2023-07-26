@@ -1,5 +1,5 @@
-import SignUpForm from "../../components/(forms)/SignUpForm";
-import LogInForm from "../../components/(forms)/LogInForm";
+import SignUpForm from "../../components/(forms)/AccessForms/SignUpForm";
+import LogInForm from "../../components/(forms)/AccessForms/LogInForm";
 
 export default function accessPage() {
   return (

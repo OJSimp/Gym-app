@@ -1,0 +1,97 @@
+@import '../../styles/globals.scss';
+
+.input-select {
+ display: flex;
+ position: relative;
+ flex-direction: column;
+ margin-bottom: 20px;
+
+ .input__select {
+  color: $light2;
+  padding: 20px;
+  padding-right: 40px;
+  border-radius: 2px;
+  border: 1px solid $primary;
+  background-color: $background;
+  transition: all 0.3s;
+  font-size: 1rem;
+
+  &:focus {
+   outline: none;
+   border: 1px solid $light2;
+  }
+ }
+
+ :not(:placeholder-shown)+.select-input__label {
+  color: $light2;
+  transform: translate(0px, -26px);
+  font-size: 0.75rem;
+  font-weight: 500;
+ }
+
+ .select-input__label {
+  position: absolute;
+  padding: 0px 6px;
+  background: $background;
+  color: $light2;
+  font-size: 1rem;
+  top: 19px;
+  left: 10px;
+  transition: all 0.2s;
+ }
+
+ .select-input__error-message {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 0px;
+  font-size: 0.75rem;
+  color: $red;
+
+  span {
+   display: flex;
+   align-items: center;
+
+   svg {
+    height: 20px;
+    width: 20px;
+   }
+  }
+ }
+}
+
+:focus-within~.select-input__label {
+ color: $light2;
+ transform: translate(0px, -26px);
+ font-size: 0.75rem;
+ font-weight: 500;
+}
+
+.select-input__icon {
+ display: flex;
+ justify-content: flex-end;
+ align-items: flex-end;
+ position: absolute;
+ padding: 6px 8px;
+ background: none;
+ border: none;
+ top: 11px;
+ right: 10px;
+
+ svg {
+  color: $primary;
+ }
+}
+
+.input-select__options{
+ margin-top: 5px;
+ border: 1px solid $light2;
+ border-radius: 2px;
+ 
+ li{
+  list-style: none;
+ 
+ }
+
+}

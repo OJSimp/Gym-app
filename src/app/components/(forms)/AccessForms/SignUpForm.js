@@ -9,12 +9,12 @@ import axios from "axios";
 import { useMutation } from "react-query";
 
 // Hooks
-import { useSignUp } from "../../hooks/useSignUp";
+import { useSignUp } from "../../../hooks/useSignUp";
 // import POST from "../../api/auth/signup/route";
 
 // Components
-import TextInput from "../(inputs)/TextInput";
-import IconTextInput from "../(inputs)/IconTextInput";
+import TextInput from "../../(inputs)/TextInput";
+import IconTextInput from "../../(inputs)/IconTextInput";
 
 // Icons
 import DoneIcon from "@mui/icons-material/Done";
@@ -24,7 +24,7 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import AppleIcon from "@mui/icons-material/Apple";
 
 const SignUp = () => {
-  const [emailErrorMessage, setEmailErrorMessage] = React.useState(null);
+  // const [emailErrorMessage, setEmailErrorMessage] = React.useState(null);
   const [isPasswordFocused, setIsPasswordFocused] = React.useState(false);
 
   const [user, setUser] = React.useState({
@@ -42,8 +42,6 @@ const SignUp = () => {
   };
   // Check that the password meets the requirments
   // Password must be at least eight characters long and include at least one number and one letter
-  // const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
-
   const passwordHasNumber = /\d/.test(user.password);
   const passwordHasLetter = /[A-Za-z]/.test(user.password);
 
@@ -92,45 +90,41 @@ const SignUp = () => {
   }
 
   // onSubmit validate the email
-  function validateEmail(user) {
-    // Email regular expression validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!user.email) {
-      setEmailErrorMessage("Please enter an email address");
-    } else if (!emailRegex.test(user.email)) {
-      console.log(!emailRegex.test(user.email));
-      setEmailErrorMessage("Please enter a valid email address");
-    } else if (emailRegex.test(user.email)) {
-      setEmailErrorMessage("");
-    }
-  }
+  // function validateEmail(user) {
+  //   // Email regular expression validation
+  //   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  //   if (!user.email) {
+  //     setEmailErrorMessage("Please enter an email address");
+  //   } else if (!emailRegex.test(user.email)) {
+  //     console.log(!emailRegex.test(user.email));
+  //     setEmailErrorMessage("Please enter a valid email address");
+  //   } else if (emailRegex.test(user.email)) {
+  //     setEmailErrorMessage("");
+  //   }
+  // }
 
   const handleSignUpUser = async (e) => {
     e.preventDefault();
 
     sigUpMutation.mutate(user);
 
-    // if there is a password error
-
-    validatePassword(user);
-    validateEmail(user);
-
-    // Require error display if user email already exists
+    // validatePassword(user);
+    // validateEmail(user);
   };
 
   return (
-    <section className="sign-up--form form-container">
+    <section className="form-container">
       {/* Sign Up Form Header */}
-      <header className="header--form">
-        <h5 className="light4">Create your account</h5>
-        <p className="light2">
-          With an account you can store, access and track your workouts from any
-          device.
-        </p>
-      </header>
 
       {/* Sign Up Form Container */}
-      <form className="form--sign-up" onSubmit={handleSignUpUser}>
+      <form className="form__sign-up" onSubmit={handleSignUpUser}>
+        <header className="form__header">
+          <h5>Create your account</h5>
+          <p>
+            With an account you can store, access and track your workouts from
+            any device.
+          </p>
+        </header>
         {/* Add Email Address */}
         <TextInput
           id="email-address"
@@ -188,13 +182,13 @@ const SignUp = () => {
         {/* Sign up form buttons */}
 
         <div className="form__btns">
-          {/* Sign up the user */}
+          {/* Sign up the user button */}
           <button
             disabled={sigUpMutation.isLoading}
             type="submit"
             className="btn btn-primary"
           >
-            Continue
+            {sigUpMutation.isLoading ? "Loading..." : "Continue"}
           </button>
 
           <p className="light1 center">
