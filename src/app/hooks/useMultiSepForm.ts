@@ -1,7 +1,7 @@
 
 import { useState, ReactElement } from "react";
 
-const useMultiStageForm = (steps: ReactElement[]) => {
+export function useMultiStageForm(steps: ReactElement[]) {
 
  let [currentStepIndex, setCurrentStepIndex] = useState(0)
 
@@ -35,5 +35,3 @@ const useMultiStageForm = (steps: ReactElement[]) => {
  }
 
 };
-
-export default useMultiStageForm;

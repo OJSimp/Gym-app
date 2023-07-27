@@ -1,0 +1,20 @@
+@import '../../styles/globals.scss';
+
+.progress-indicator{
+ display: flex;
+ gap: 4px;
+ height: 4px;
+ margin-bottom: 10px;
+
+.progress-indicator__step{
+ background-color: $dark2;
+ height: 100%;
+ width: 100%;
+}
+
+.progress-indicator__step--active{
+ background-color: $primary;
+ height: 100%;
+ width: 100%;
+}
+}
