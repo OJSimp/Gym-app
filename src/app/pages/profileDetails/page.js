@@ -10,8 +10,13 @@ import ProgressIndicator from "../../components/navigation/formProgress.js";
 
 // Hooks
 import { useMultiStageForm } from "../../hooks/useMultiSepForm.ts";
+import { useState } from "react";
 
 export default function profileDetailsPage() {
+  const [firstName, setFirstname] = useState();
+
+  console.log(firstName);
+
   const {
     steps,
     currentStepIndex,
@@ -21,16 +26,25 @@ export default function profileDetailsPage() {
     previous,
     next,
   } = useMultiStageForm([
-    <UserDetails />,
+    <UserDetails firstName={firstName} />,
     <BirthdayForm />,
     <UnitsForm />,
     <CompositionForm />,
     <GoalsForm />,
   ]);
 
+  const handleProfileDetails = (e) => {
+    e.preventDefault();
+    next();
+  };
+
   return (
     <section className="form-container">
-      <form action="" className="form__user-information">
+      <form
+        action=""
+        className="form__user-information"
+        onSubmit={handleProfileDetails}
+      >
         <ProgressIndicator
           steps={steps.length}
           currentStepIndex={currentStepIndex}
@@ -46,15 +60,9 @@ export default function profileDetailsPage() {
               Back
             </button>
           )}
-          {!isLastStep ? (
-            <button className="btn btn-primary" type="button" onClick={next}>
-              Next
-            </button>
-          ) : (
-            <button className="btn btn-primary" type="submit">
-              Submit
-            </button>
-          )}
+          <button className="btn btn-primary" type="submit">
+            {isLastStep ? "Finish" : "Next"}
+          </button>
         </div>
       </form>
     </section>

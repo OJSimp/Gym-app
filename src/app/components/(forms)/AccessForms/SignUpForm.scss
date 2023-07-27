@@ -1,11 +1,15 @@
 @import '../../../styles/globals.scss';
 
+// .form__password-container{
+//  display: flex;
+//  flex-direction: column;
+//  gap: 10px;
+
 .password-condition{
  display: flex;
  flex-direction: column;
  gap: 20px;
  padding: 20px;
- margin-bottom: 20px;
  border-radius: 2px;
  border: 1px solid $dark2;
  color: $light2;
@@ -24,3 +28,4 @@
  }
  }
 }
+// }

@@ -14,6 +14,7 @@ export default function TextInput(props) {
         onChange={props.onChange}
         onFocus={props.onFocus}
         name={props.name}
+        autoFocus
       />
       <label className="text-input__label" htmlFor={props.id}>
         {props.label}

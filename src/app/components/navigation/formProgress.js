@@ -5,8 +5,6 @@ const ProgressIndicator = (props) => {
   const currentStep = props.currentStepIndex;
   const formStepsArray = Array.from({ length: number }, (_, index) => index);
 
-  console.log("CreatedArray:", currentStep);
-
   return (
     <div className="progress-indicator">
       {formStepsArray.map((item, index) => {

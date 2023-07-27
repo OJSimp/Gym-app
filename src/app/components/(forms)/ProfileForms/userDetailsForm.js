@@ -11,6 +11,8 @@ const UserDetails = (props) => {
   const [gender, setGender] = useState("");
 
   const genderArray = ["Male", "Female", "Other"];
+
+  // console.log(firstName);
   return (
     firstName,
     lastName,
@@ -24,31 +26,37 @@ const UserDetails = (props) => {
             experience.
           </p>
         </header>
-        <TextInput
-          id="first-name"
-          type="text"
-          label="First name"
-          error=""
-          name="first-name"
-          onChange={(e) => setFirstName(e.target.value)}
-        />
-        <TextInput
-          id="last-name"
-          type="text"
-          label="Last name"
-          error=""
-          name="last-name"
-          onChange={(e) => setLastName(e.target.value)}
-        />
-        <SelectInput
-          id="gender"
-          type="text"
-          label="Gender"
-          options={genderArray}
-          error=""
-          name="gender"
-          onChange={(e) => setGender(e.target.value)}
-        />
+        <div className="form__body">
+          <TextInput
+            required
+            id="first-name"
+            type="text"
+            label="First name"
+            error=""
+            name="first-name"
+            onChange={(e) => setFirstName(e.target.value)}
+            value={firstName}
+          />
+          <TextInput
+            id="last-name"
+            type="text"
+            label="Last name"
+            error=""
+            name="last-name"
+            onChange={(e) => setLastName(e.target.value)}
+            value={lastName}
+          />
+          <SelectInput
+            id="gender"
+            type="text"
+            label="Gender"
+            options={genderArray}
+            error=""
+            name="gender"
+            onChange={(e) => setGender(e.target.value)}
+            value={gender}
+          />
+        </div>
       </div>
     )
   );

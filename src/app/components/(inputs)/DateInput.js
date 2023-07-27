@@ -56,6 +56,7 @@ export default function SelectInput(props) {
         onFocus={props.onFocus}
         onClick={handleDate}
         name={props.name}
+        autoFocus
       />
 
       {/* If there is an error for this input return error message */}

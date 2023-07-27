@@ -5,12 +5,10 @@ import Link from "next/link";
 import React, { useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
 import axios from "axios";
-// import { toast } from "react-hot-toast";
 import { useMutation } from "react-query";
 
 // Hooks
 import { useSignUp } from "../../../hooks/useSignUp";
-// import POST from "../../api/auth/signup/route";
 
 // Components
 import TextInput from "../../(inputs)/TextInput";
@@ -23,7 +21,7 @@ import GoogleIcon from "@mui/icons-material/Google";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import AppleIcon from "@mui/icons-material/Apple";
 
-const SignUp = () => {
+const SignUp = ({ toggleAccessForms }) => {
   // const [emailErrorMessage, setEmailErrorMessage] = React.useState(null);
   const [isPasswordFocused, setIsPasswordFocused] = React.useState(false);
 
@@ -122,49 +120,51 @@ const SignUp = () => {
             any device.
           </p>
         </header>
-        {/* Add Email Address */}
-        <TextInput
-          id="email-address"
-          type="email"
-          label="Email addresss"
-          error=""
-          name="email"
-          onChange={(e) => {
-            setUser({ ...user, email: e.target.value });
-          }}
-        />
+        <div className="form__body">
+          {/* Add Email Address */}
+          <TextInput
+            id="email-address"
+            type="email"
+            label="Email addresss"
+            error=""
+            name="email"
+            onChange={(e) => {
+              setUser({ ...user, email: e.target.value });
+            }}
+          />
 
-        {/* Create Password */}
-        <IconTextInput
-          id="password"
-          type="password"
-          label="Create password"
-          error=""
-          name="password"
-          icon={true}
-          onChange={(e) => {
-            setUser({ ...user, password: e.target.value });
-          }}
-          onFocus={handlePasswordFocus}
-        />
+          {/* Create a Password */}
+          <IconTextInput
+            id="password"
+            type="password"
+            label="Create password"
+            error=""
+            name="password"
+            icon={true}
+            onChange={(e) => {
+              setUser({ ...user, password: e.target.value });
+            }}
+            onFocus={handlePasswordFocus}
+          />
 
-        <div
-          className={`password-condition ${
-            isPasswordFocused ? "animate-down" : "hide"
-          }`}
-        >
-          <p>Your password must contain:</p>
-          <div className="password-condition__item password-condition--length">
-            <span>
-              <DoneIcon />
-            </span>
-            <p>At least 8 characters</p>
-          </div>
-          <div className="password-condition__item password-condition--combination">
-            <span>
-              <DoneIcon />
-            </span>
-            <p>Include a combination of letters & numbers.</p>
+          <div
+            className={`password-condition ${
+              isPasswordFocused ? "animate-down" : "hide"
+            }`}
+          >
+            <p>Your password must contain:</p>
+            <div className="password-condition__item password-condition--length">
+              <span>
+                <DoneIcon />
+              </span>
+              <p>At least 8 characters</p>
+            </div>
+            <div className="password-condition__item password-condition--combination">
+              <span>
+                <DoneIcon />
+              </span>
+              <p>Include a combination of letters & numbers.</p>
+            </div>
           </div>
         </div>
 
@@ -186,7 +186,7 @@ const SignUp = () => {
 
           <p className="light1 center">
             Already have an account?{" "}
-            <Link className="btn-text" href="/">
+            <Link href="login" className="btn-text">
               Log in
             </Link>
           </p>
