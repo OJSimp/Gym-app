@@ -17,3 +17,19 @@ export default function Component() {
     </>
   );
 }
+
+
+export default function GuestUser() {
+
+return
+}
+
+export default function AuthorisedUser({session}) {
+
+return(
+  <section>
+    <h1>User Details</h1>
+    <h2>Email: {session.user.email}</h2>
+  </section>
+  )
+}

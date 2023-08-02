@@ -1,15 +1,23 @@
-import userDetails from "../../components/(forms)/ProfileForms/userDetailsForm";
+"use client";
 
-import UserInfo from "../../components/(forms)/WorkoutForms/userInfo";
-
-import SignUp from "../../components/(forms)/AccessForms/SignUpForm";
-import LogIn from "../../components/(forms)/AccessForms/LogInForm";
+import axios, { AxiosError } from "axios";
 
 const profilePage = () => {
+  const handleLogOut = async () => {
+    try {
+      await axios.get("/api/auth/logout");
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   return (
     <section>
-      <LogIn />
-      <UserInfo />
+      <h5>Profile</h5>
+      <br />
+      <hr />
+      <br />
+      <button onClick={handleLogOut}>Log out</button>
     </section>
   );
 };

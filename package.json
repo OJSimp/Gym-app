@@ -16,6 +16,7 @@
     "env": "^0.0.2",
     "eslint": "8.45.0",
     "eslint-config-next": "13.4.10",
+    "jsonwebtoken": "^9.0.1",
     "mongodb": "^5.7.0",
     "mongodb-uri": "^0.9.7",
     "next": "^13.4.10",

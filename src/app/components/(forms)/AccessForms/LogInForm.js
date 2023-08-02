@@ -3,7 +3,11 @@
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
+import axios, { AxiosError } from "axios";
+
 //Hooks
+// import { useSession, signin, signOut } from "next-auth/react";
+import { useLogIn } from "../../../hooks/useLogIn";
 
 // Components
 import TextInput from "../../(inputs)/TextInput";
@@ -17,14 +21,36 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import AppleIcon from "@mui/icons-material/Apple";
 
 const LogIn = () => {
+  const [isLoading, setIsLoading] = useState(null);
+
+  const { login } = useLogIn();
+
   const [user, setUser] = React.useState({
     email: "",
     password: "",
   });
 
-  const handleLogIn = (e) => {
+  const handleLogIn = async (e) => {
     e.preventDefault(e);
-    console.log("log in", user);
+    // login(user);
+
+    try {
+      setIsLoading(true);
+      const response = await axios.post("/api/auth/login", user);
+      console.log("Login success", response.data);
+      const json = response.json;
+      localStorage.setItem("user", JSON.stringify(json));
+    } catch (error) {
+      console.log("Login failed", error.message);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  // Google Login Handler
+
+  const handleGoogleLogIn = async () => {
+    signIn("google", { callbackUrl: "http://localhost:3000/" });
   };
 
   return (
@@ -89,6 +115,7 @@ const LogIn = () => {
           <button
             type="button"
             className="btn btn-outline btn-outline--align-left"
+            onClick={handleGoogleLogIn}
           >
             <GoogleIcon />
             <span>Log in with Google</span>

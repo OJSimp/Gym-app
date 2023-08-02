@@ -14,13 +14,13 @@ export async function POST(req: NextRequest, res: NextResponse){
         const reqBody = await req.json()
         const {email, password} = reqBody
 
+        if (!email && !password) {
+            return NextResponse.json({error: "Email & password are empty"}, {status: 420});
+        }
         //check if user already exists
         const user = await User.findOne({email})
         if(user){
             return NextResponse.json({error: "Email already exists"}, {status: 400})
-        }
-        if (!email && !password) {
-            return NextResponse.json({error: "Email & password are empty"}, {status: 420});
         }
         if (!password) {
             return NextResponse.json({error: "Password is empty"}, {status: 421});
@@ -39,8 +39,6 @@ export async function POST(req: NextRequest, res: NextResponse){
         //hash password
         const salt = await bcryptjs.genSalt(10)
         const hashedPassword = await bcryptjs.hash(password, salt)
-
-        console.log("new user", email, hashedPassword);
 
         const newUser = User.create({
                 email: email,
