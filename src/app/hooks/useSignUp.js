@@ -21,32 +21,14 @@ export const useSignUp = (user) => {
     },
     onSuccess: (data, variables, context) => {
       // onSuccess Login user
-      // dispatch({ type: "LOGIN", paylaod: json });
       console.log("success:", context, data, variables);
-
-      // Naviate to dashboard on success
-      // const navTarget = locationFrom || "/";
-      // router.push(navTarget, { replace: !locationFrom });
+      // Naviate to profile details on success
+      router.push("pages/profileDetails");
     },
     onError: (error) => {
       // Return errors to client
       if (error instanceof AxiosError) {
         if (error.response.status === 400) {
-          setErrorMessage(error.response.data.error);
-        }
-        if (error.response.status === 420) {
-          setErrorMessage(error.response.data.error);
-        }
-        if (error.response.status === 421) {
-          setErrorMessage(error.response.data.error);
-        }
-        if (error.response.status === 422) {
-          setErrorMessage(error.response.data.error);
-        }
-        if (error.response.status === 402) {
-          setErrorMessage(error.response.data.error);
-        }
-        if (error.response.status === 410) {
           setErrorMessage(error.response.data.error);
         }
       }

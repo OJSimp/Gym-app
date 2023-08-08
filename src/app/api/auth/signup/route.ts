@@ -1,5 +1,3 @@
-// import { connect } from "../../../../dbConfig/dbConfig";
-// import User from "../../../../models/userModel";
 import {connect} from '../../../../dbConfig/dbConfig'; 
 import User from '../../../../models/userModel';
 import { NextRequest, NextResponse } from "next/server";
@@ -15,7 +13,7 @@ export async function POST(req: NextRequest, res: NextResponse){
         const {email, password} = reqBody
 
         if (!email && !password) {
-            return NextResponse.json({error: "Email & password are empty"}, {status: 420});
+            return NextResponse.json({error: "Email & password are empty"}, {status: 400});
         }
         //check if user already exists
         const user = await User.findOne({email})
@@ -23,17 +21,17 @@ export async function POST(req: NextRequest, res: NextResponse){
             return NextResponse.json({error: "Email already exists"}, {status: 400})
         }
         if (!password) {
-            return NextResponse.json({error: "Password is empty"}, {status: 421});
+            return NextResponse.json({error: "Password is empty"}, {status: 400});
         }
         if (!email) {
-            return NextResponse.json({error: "Email is empty"}, {status: 422});
+            return NextResponse.json({error: "Email is empty"}, {status: 400});
         }
         if (!validator.isEmail(email)) {
-            return NextResponse.json({error: "Email is invalid"}, {status: 402});
+            return NextResponse.json({error: "Email is invalid"}, {status: 400});
         }
         const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
         if(!passwordRegex.test(password)){
-            return NextResponse.json({error: "Password must fit the requirements"}, {status: 410});
+            return NextResponse.json({error: "Password must fit the requirements"}, {status: 400});
         }
 
         //hash password

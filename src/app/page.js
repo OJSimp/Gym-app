@@ -1,9 +1,5 @@
 import styles from "./page.module.css";
 
 export default function Home() {
-  return (
-    <main className={styles.main}>
-      <h3>Home</h3>
-    </main>
-  );
+  return <main className={styles.main}></main>;
 }

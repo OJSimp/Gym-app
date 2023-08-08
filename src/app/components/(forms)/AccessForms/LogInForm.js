@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-
+import { useRouter } from "next/navigation";
 import axios, { AxiosError } from "axios";
 
 //Hooks
@@ -22,8 +22,9 @@ import AppleIcon from "@mui/icons-material/Apple";
 
 const LogIn = () => {
   const [isLoading, setIsLoading] = useState(null);
+  const [errorMessage, setErrorMessage] = useState("");
 
-  const { login } = useLogIn();
+  const router = useRouter();
 
   const [user, setUser] = React.useState({
     email: "",
@@ -32,16 +33,15 @@ const LogIn = () => {
 
   const handleLogIn = async (e) => {
     e.preventDefault(e);
-    // login(user);
 
     try {
       setIsLoading(true);
       const response = await axios.post("/api/auth/login", user);
-      console.log("Login success", response.data);
       const json = response.json;
       localStorage.setItem("user", JSON.stringify(json));
+      router.push("/pages/profile");
     } catch (error) {
-      console.log("Login failed", error.message);
+      setErrorMessage(error.response.data.error);
     } finally {
       setIsLoading(false);
     }
@@ -86,6 +86,13 @@ const LogIn = () => {
               setUser({ ...user, password: e.target.value });
             }}
           />
+
+          {errorMessage ? (
+            <div className="error--message">
+              <ErrorOutlineIcon />
+              <p>{errorMessage}</p>
+            </div>
+          ) : null}
 
           <Link href="/">Forgot password?</Link>
         </div>

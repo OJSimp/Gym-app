@@ -39,7 +39,7 @@ export const options: NextAuthOptions = {
                 }
             }
         }),
- AppleProvider({
+   AppleProvider({
       clientId: process.env.APPLE_ID as string,
       clientSecret: process.env.APPLE_SECRET as string,
     }),

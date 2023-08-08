@@ -12,14 +12,20 @@ export const useLogIn = (user) => {
 
     const json = await response.json();
 
-    if (!response.ok) {
-      // if not sucessful - send back error and finished loading
-      setErrorMessage(json.error);
+    if (error instanceof AxiosError) {
+      if (error.response.status === 400) {
+        setErrorMessage(error.response.data);
+      }
     }
-    if (response.ok) {
-      localStorage.setItem("user", JSON.stringify(json));
-    }
+
+    // if (!response.ok) {
+    //   // if not sucessful - send back error and finished loading
+    //   setErrorMessage(json.error);
+    // }
+    // if (response.ok) {
+    //   localStorage.setItem("user", JSON.stringify(json));
+    // }
   };
 
-  return login;
+  return login, errorMessage;
 };

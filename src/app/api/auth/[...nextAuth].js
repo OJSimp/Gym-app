@@ -6,6 +6,7 @@ import EmailProvider from "next-auth/providers/email";
 
 export default NextAuth({
   providers: [
+    CredentialsProvider({}),
     // OAuth authentication providers...
     AppleProvider({
       clientId: process.env.APPLE_ID,
